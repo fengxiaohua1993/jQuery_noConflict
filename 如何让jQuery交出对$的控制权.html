@@ -6,20 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>如何让jQuery交出对$的控制权</title>
-  <script src="../lib/jquery-1.12.4.js"></script>
+  <script src="./jquery-1.12.4.js"></script>
 </head>
 
 <body>
 
   <div class="box">1234</div>
   <script>
-    //方法一 直接交出控制权
-    // jQuery.noConflict();
-    var $jq = jQuery.noConflict();
+    
+    //方法一 直接交出控制权 以后使用jQuery
+    jQuery.noConflict();
+    var html1 = jQuery('.box').html();
+    console.log(html1);
 
+
+
+    // 方法二 更换别名将$更名为$jq或者其他内容
+    var $jq = jQuery.noConflict();
+    var html2 = $jq('.box').html();
+    console.log(html2);
+
+
+
+    // 方法三: 定义语句块 在jquery的入口函数中将$作为参数传入 就可以在jquery中继续使用$
     jQuery(document).ready(function ($) {
-      var html = $('.box').html();
-      console.log(html);
+      var html3 = $('.box').html();
+      console.log(html3);
     });
 
   </script>
