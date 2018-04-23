@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>如何让jQuery交出对$的控制权</title>
+  <script src="../lib/jquery-1.12.4.js"></script>
+</head>
+
+<body>
+
+  <div class="box">1234</div>
+  <script>
+    //方法一 直接交出控制权
+    // jQuery.noConflict();
+    var $jq = jQuery.noConflict();
+
+    jQuery(document).ready(function ($) {
+      var html = $('.box').html();
+      console.log(html);
+    });
+
+  </script>
+</body>
+
+</html>
